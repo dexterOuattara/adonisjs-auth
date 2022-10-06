@@ -85,6 +85,14 @@ export default class AuthController {
     })
   }
 
+  public async profile ({ view}: HttpContextContract) {
+
+    const users = await Database.from(User.table)
+    return view.render('pages/profile', {
+      users
+    })
+  }
+
 
   public async userlistDetail ({params, view }: HttpContextContract) {
       const user = await User.findOrFail(params.id)

@@ -20,51 +20,49 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Liste Des Utilisateurs</h3>
-              </div>
               <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">FULLNAME</th>
-                      <th scope="col">EMAIL</th>
-                      <th scope="col">DATE INSCRIPTION</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @each(user in users)
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <form>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nom</label>
+                    <input type="name" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Prenom</label>
+                    <input type="surname" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Mot de Passe</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Photo de Profile</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choisisser</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Teleharger</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
 
-                    <tr>
-                      <th scope="row">{{ user.id}}</th>
-                      <td>                      
-                        <a href="{{ route('userlistDetail', {id: user.id})}}">
-                        {{ user.username}}
-                    </a></td>
-                      <td>{{ user.email}}</td>
-                      <td>{{ user.created_at}}</td>
-
-                    </tr>
-                    @endeach
-                    
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">FULLNAME</th>
-                      <th scope="col">EMAIL</th>
-                      <th scope="col">DATE INSCRIPTION</th>
-                    </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
             </div>
-
-
+            <!-- /.card -->
+              <!-- /.card-body -->
 
         </div>
         <!-- /.row -->

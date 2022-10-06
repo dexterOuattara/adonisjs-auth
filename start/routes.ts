@@ -40,6 +40,7 @@ Route.get('/', async ({ view }) => {
 
 
 // }).middleware('auth')
+Route.get('profile', 'AuthController.profile').as('profile')
 Route.get('userlist', 'AuthController.userlist').as('userlist')
 Route.get('userlist/:id', 'AuthController.userlistDetail').as('userlistDetail')
 Route.get('adduser', 'AuthController.adduser').as('user.adduser')
