@@ -1,0 +1,120 @@
+
+  @include('partials/header')
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <!-- DataTables -->
+  <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+  <script src='https://8x8.vc/external_api.js' async></script>
+  <style>html, body, #jaas-container { height: 400%; }</style>
+  <script type="text/javascript">
+    window.onload = () => {
+      const api = new JitsiMeetExternalAPI("8x8.vc", {
+        roomName: "vpaas-magic-cookie-ac1a00a446694fad8c3431a60a6fadcb/SampleAppSecondaryBailsHostPartly",
+        parentNode: document.querySelector('#jaas-container')
+      });
+    }
+  </script>
+  @include('partials/sidebar')
+
+  @include('partials/breadcrumb')
+
+
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="jaas-container" />
+            {{--  <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste Des Utilisateurs</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">FULLNAME</th>
+                      <th scope="col">EMAIL</th>
+                      <th scope="col">DATE INSCRIPTION</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @each(user in users)
+
+                    <tr>
+                      <th scope="row">{{ user.id}}</th>
+                      <td>                      
+                        <a href="{{ route('userlistDetail', {id: user.id})}}">
+                        {{ user.username}}
+                    </a></td>
+                      <td>{{ user.email}}</td>
+                      <td>{{ user.created_at}}</td>
+
+                    </tr>
+                    @endeach
+                    
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">FULLNAME</th>
+                      <th scope="col">EMAIL</th>
+                      <th scope="col">DATE INSCRIPTION</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>  --}}
+
+
+
+          </div>
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  @include('partials/footer')
+
+<!-- DataTables  & Plugins -->
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="assets/plugins/jszip/jszip.min.js"></script>
+<script src="assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

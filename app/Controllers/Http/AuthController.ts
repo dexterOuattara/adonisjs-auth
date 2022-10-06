@@ -1,5 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
+import Database from '@ioc:Adonis/Lucid/Database';
 import User from "App/Models/User";
 
 export default class AuthController {
@@ -29,6 +30,23 @@ export default class AuthController {
     return response.redirect('/')
   }
 
+
+  public async adduser ({ view}: HttpContextContract) {
+    const user = new User()
+
+    return view.render('user/adduser', {
+      user
+      
+  })
+  }
+
+//   async adduser ({params, request, session, response}: HttpContextContract){
+//     await this.handleRequest(params, request)
+//     session.flash({success: "L'article a bien ete creer"})
+//     return response.redirect().toRoute('home')
+// }
+ 
+
   public async loginShow({ view }: HttpContextContract) {
     return view.render('auth/login')
   }
@@ -57,4 +75,22 @@ export default class AuthController {
     // redirect to login page
     return response.redirect().toRoute('auth.login.show')
   }
+
+
+  public async userlist ({ view}: HttpContextContract) {
+
+    const users = await Database.from(User.table)
+    return view.render('pages/userlist', {
+      users
+    })
+  }
+
+
+  public async userlistDetail ({params, view }: HttpContextContract) {
+      const user = await User.findOrFail(params.id)
+      return view.render('pages/userlistdetail', {
+          user,
+      })
+  }
+    
 }

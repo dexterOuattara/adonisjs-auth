@@ -20,12 +20,42 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+
+
 Route.get('/', async ({ view }) => {
-  return view.render('welcome')
+  return view.render('pages/welcome')
 })
+
+// Route.get('userlist', async ({ view }) => {
+//   return view.render('pages/userlist')
+// })
+
+// Route.get('userlist', 'AuthController.userlistShow').as('user.userlist.show')
+
+
+
+// SECURE AUTH SPACE
+
+// Route.group(() => {
+
+
+// }).middleware('auth')
+Route.get('userlist', 'AuthController.userlist').as('userlist')
+Route.get('userlist/:id', 'AuthController.userlistDetail').as('userlistDetail')
+Route.get('adduser', 'AuthController.adduser').as('user.adduser')
+Route.post('adduser', 'AuthController.register').as('add.user')
+// Route.get('adduser', 'AuthController.adduserShow').as('user.adduser.show')
+
+
+// AUTH USER
 
 Route.get('register', 'AuthController.registerShow').as('auth.register.show')
 Route.post('register', 'AuthController.register').as('auth.register')
 Route.get('login', 'AuthController.loginShow').as('auth.login.show')
 Route.post('login', 'AuthController.login').as('auth.login')
 Route.get('logout', 'AuthController.logout').as('auth.logout')
+
+
+
+
+

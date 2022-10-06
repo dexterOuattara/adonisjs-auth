@@ -1,0 +1,23 @@
+@layout('layout')
+
+
+@section('body')
+
+
+
+
+<h2 class="text-center"> DETAIL USER </h2>
+
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">FULLNAME</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="{{ user.username}}">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">EMAIL ADDRESS</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="{{ user.email}}">
+</div>
+
+          
+
+@endsection
