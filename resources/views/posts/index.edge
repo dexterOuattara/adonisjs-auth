@@ -1,0 +1,76 @@
+
+  @include('partials/header')
+
+
+  @include('partials/sidebar')
+
+  @include('partials/breadcrumb')
+
+
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste Des Utilisateurs</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">TITLE</th>
+                      <th scope="col">DESCRIPTION</th>
+                      <th scope="col">OWNER</th>
+                      <th scope="col">RELEASE DATE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @each(post in posts)
+
+                    <tr>
+                      <th scope="row">{{ post.id}}</th>
+                      <td>                      
+                        <a href="{{ route('PostsController.show', {id: post.id})}}">
+                        {{ post.title}}
+                    {{--  </a>  --}}
+                </td>
+                <td>{{ post.description}}</td>
+                <td></td>
+                {{--  <td>{{post.owner.username}}</td>  --}}
+                <td>{{ post.createdAt.toLocaleString({ locale: 'fr-FR'}) }}, mis à jour le {{ post.updatedAt.toLocaleString({ locale: 'fr-FR'}) }}</td>
+                </tr>
+                    @endeach
+                    
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">TITLE</th>
+                      <th scope="col">DESCRIPTION</th>
+                      <th scope="col">OWNER</th>
+                      <th scope="col">RELEASE DATE</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+
+
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  @include('partials/footer')
+
+

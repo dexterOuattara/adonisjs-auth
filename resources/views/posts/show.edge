@@ -1,0 +1,63 @@
+
+  @include('partials/header')
+
+  @include('partials/sidebar')
+
+  @include('partials/breadcrumb')
+
+
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  
+                  <h3 class="card-title">Liste Des Article </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                  <form>
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Post ID</label>
+                        <input type="text" class="form-control" id="text" placeholder="{{ post.id}}" readonly>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="{{ post.title}}" cols="30" rows="5">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Description</label>
+                        <textarea class="form-control" name="description" id="description" placeholder="{{ post.description}}" cols="30" rows="5"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Date Publication</label>
+                        <input type="text" class="form-control" id="text" placeholder="{{ post.createdAt.toLocaleString({ locale: 'fr-FR'}) }}, mis à jour le {{ post.updatedAt.toLocaleString({ locale: 'fr-FR'}) }}" readonly>
+                      </div>
+                    </div>
+                    <!-- /.card-body -->
+    
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card-body -->
+              </div>
+  
+  
+  
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  @include('partials/footer')
+
+

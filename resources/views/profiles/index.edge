@@ -30,33 +30,36 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">FULLNAME</th>
-                      <th scope="col">EMAIL</th>
-                      <th scope="col">DATE INSCRIPTION</th>
+                      <th scope="col">BIRTHDAY</th>
+                      <th scope="col">PHONE</th>
+                      <th scope="col">GENDER</th>
+                      <th scope="col">RELEASE DATE</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @each(user in users)
+                    @each(profile in profiles)
 
                     <tr>
-                      <th scope="row">{{ user.id}}</th>
+                      <th scope="row">{{ profile.id}}</th>
                       <td>                      
-                        <a href="{{ route('show', {id: user.id})}}">
-                        {{ user.username}}
-                    </a></td>
-                      <td>{{ user.email}}</td>
-                      <td>{{ user.created_at}}</td>
-
-                    </tr>
+                        <a href="{{ route('ProfilesController.show', {id: profile.id})}}">
+                        {{ profile.birthday}}
+                    {{--  </a>  --}}
+                </td>
+                <td>{{ profile.phone}}</td>
+                <td>{{ profile.gender}}</td>
+                {{--  <td>{{post.owner.username}}</td>  --}}
+                <td>{{ profile.createdAt.toLocaleString({ locale: 'fr-FR'}) }}, mis à jour le {{ profile.updatedAt.toLocaleString({ locale: 'fr-FR'}) }}</td>
+                </tr>
                     @endeach
                     
                   </tbody>
                   <tfoot>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">FULLNAME</th>
-                      <th scope="col">EMAIL</th>
-                      <th scope="col">DATE INSCRIPTION</th>
+                      <th scope="col">TITLE</th>
+                      <th scope="col">DESCRIPTION</th>
+                      <th scope="col">RELEASE DATE</th>
                     </tr>
                   </tfoot>
                 </table>

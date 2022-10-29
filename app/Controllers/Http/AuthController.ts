@@ -77,13 +77,20 @@ export default class AuthController {
   }
 
 
-  public async userlist ({ view}: HttpContextContract) {
+  // public async userlist ({ view}: HttpContextContract) {
 
-    const users = await Database.from(User.table)
-    return view.render('pages/userlist', {
-      users
+  //   const users = await Database.from(User.table)
+  //   return view.render('pages/userlist', {
+  //     users
+  //   })
+  // }
+
+  public async userlistDetail ({params, view }: HttpContextContract) {
+    const user = await User.findOrFail(params.id)
+    return view.render('users/index', {
+        user,
     })
-  }
+}
 
   public async profile ({ view}: HttpContextContract) {
 
@@ -93,12 +100,5 @@ export default class AuthController {
     })
   }
 
-
-  public async userlistDetail ({params, view }: HttpContextContract) {
-      const user = await User.findOrFail(params.id)
-      return view.render('pages/userlistdetail', {
-          user,
-      })
-  }
     
 }

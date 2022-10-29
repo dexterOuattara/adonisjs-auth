@@ -41,8 +41,8 @@ Route.get('/', async ({ view }) => {
 
 // }).middleware('auth')
 Route.get('profile', 'AuthController.profile').as('profile')
-Route.get('userlist', 'AuthController.userlist').as('userlist')
-Route.get('userlist/:id', 'AuthController.userlistDetail').as('userlistDetail')
+// Route.get('userlist', 'UsersController.userlist').as('userlist')
+// Route.get('userlist/:id', 'AuthController.userlistDetail').as('userlistDetail')
 Route.get('adduser', 'AuthController.adduser').as('user.adduser')
 Route.post('adduser', 'AuthController.register').as('add.user')
 // Route.get('adduser', 'AuthController.adduserShow').as('user.adduser.show')
@@ -56,6 +56,18 @@ Route.get('login', 'AuthController.loginShow').as('auth.login.show')
 Route.post('login', 'AuthController.login').as('auth.login')
 Route.get('logout', 'AuthController.logout').as('auth.logout')
 
+
+Route.resource('users', 'UsersController')
+Route.get('userlist', 'UsersController.userlist').as('userlist')
+Route.get('userlist/:id', 'UsersController.show').as('show')
+
+
+
+
+Route.resource('profiles', 'ProfilesController').as('profiles')
+Route.resource('posts', 'PostsController').as('posts')
+Route.resource('services', 'ServicesController').apiOnly()
+Route.resource('constantes', 'ConstantesController').apiOnly()
 
 
 
